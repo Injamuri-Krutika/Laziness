@@ -1,0 +1,137 @@
+.center-div {
+  margin: 250 auto;
+  width: 600px;
+  height: auto;
+  border: 1px solid #d3d3d3;
+  /* border-radius: 15px; */
+  background: white;
+  box-shadow: 5px 10px 18px gray;
+}
+
+.header-div {
+  width: inherit;
+  height: 70px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border: 0.5px solid #d3d3d3;
+  background: #009688;
+}
+
+.header-text {
+  color: white;
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  padding-left: 10px;
+  font-size: 28px;
+}
+.body-div {
+  margin: 0 auto;
+  height: auto;
+  width: inherit;
+  text-align: center;
+  padding: 5% 0 5%;
+  align-items: center;
+}
+.footer-div {
+  /* width: 100%; */
+  height: 50px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  /* border: 0.5px solid #e0e0e0; */
+  text-align: center;
+  padding: 2%;
+}
+.center {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #038578 radial-gradient(circle, transparent 1%, #06b8a7 1%)
+    center/15000%;
+}
+.ripple:active {
+  background-color: #0b7c71;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Button style */
+button {
+  border: none;
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #009688;
+  box-shadow: 0 0 4px #999;
+  outline: none;
+}
+
+.inp {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 280px;
+}
+.inp .label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-size: 16px;
+  color: #9098a9;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.inp .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #07f;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.inp input {
+  -webkit-appearance: none;
+  /* width: 100%; */
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+}
+.inp input:hover {
+  background: rgba(34, 50, 84, 0.03);
+}
+.inp input:not(:placeholder-shown) + span {
+  color: #5a667f;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus {
+  background: none;
+  outline: none;
+}
+.inp input:focus + span.label {
+  color: #07f;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus + span + .border {
+  transform: scaleX(1);
+}

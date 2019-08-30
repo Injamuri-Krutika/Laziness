@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Lab Exam</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/material.min.css" />
+  </head>
+  <body style="background: linear-gradient(to right, #ffffff, #bffff3)">
+    <img src="images/uni_logo.png" height="200px" width="200px" />
+    <div class="centeritems mdl-grid top-margin">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-cell mdl-cell--4-col mdl-typography--text-center">
+        <div class="demo-card-square mdl-card mdl-shadow--16dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text mdl-typography--text-center">
+              DSP Lab Minor 1
+            </h2>
+          </div>
+          <form action="#">
+            <div
+              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            >
+              <input class="mdl-textfield__input" type="text" id="sample3" />
+              <label class="mdl-textfield__label" for="sample3">Roll No</label>
+            </div>
+            <div
+              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            >
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                pattern="-?[0-9]*(\.[0-9]+)?"
+                id="sample4"
+              />
+              <label class="mdl-textfield__label" for="sample4"
+                >Set Number</label
+              >
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div
+              class="mdl-textfield mdl-js-textfield mdl-textfield--file mdl-textfield--floating-label"
+            >
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="uploadFile"
+                readonly
+              />
+              <label class="mdl-textfield__label" for="sample3">File</label>
+
+              <div
+                class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file"
+              >
+                <i class="material-icons">attach_file</i
+                ><input type="file" id="uploadBtn" />
+              </div>
+            </div>
+          </form>
+          <div class="mdl-card__actions mdl-card--border">
+            <button
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            >
+              Upload Details
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+    </div>
+
+    <!-- Accent-colored raised button with ripple -->
+
+    <script defer src="./js/material.min.js"></script>
+    <script src="./js/upload_file.js"></script>
+  </body>
+</html>

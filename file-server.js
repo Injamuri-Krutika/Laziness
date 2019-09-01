@@ -10,8 +10,8 @@ const app = express();
 const upload = multer({
   dest: './dsp',
   fileFilter: (req, file, cb) => {
-    if (path.extension(file.originalname) !== '.pdf') {
-      return cb(new Error('Only pdfs are allowed'));
+    if (path.extension(file.originalname) !== '.zip') {
+      return cb(new Error('Only ZIPs are allowed'));
     }
     return cb(null, true);
   },

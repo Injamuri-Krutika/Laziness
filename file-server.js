@@ -5,10 +5,15 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs-extra');
 
 const app = express();
 const storage = multer.diskStorage({
-  destination: './dsp',
+  destination: (req, file, cb) => {
+    const dest = `./dsp/${req.body.set}/`;
+    fs.mkdirsSync(dest);
+    cb(null, dest);
+  },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },

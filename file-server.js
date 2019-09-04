@@ -7,17 +7,25 @@ const multer = require('multer');
 const path = require('path');
 
 const app = express();
-const upload = multer({
-  dest: './dsp',
+const storage = multer.diskStorage({
+  destination: './dsp',
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
   fileFilter: (req, file, cb) => {
-    if (path.extension(file.originalname) !== '.zip') {
+    if (path.extname(file.originalname) !== '.zip') {
       return cb(new Error('Only ZIPs are allowed'));
     }
     return cb(null, true);
   },
 });
 
+const upload = multer({ storage });
+
 app.post('/submit', upload.single('zip'), (request, response) => {
+  console.log(request.file);
+  console.log(request.body);
+
   const meta = {
     name: request.file.originalname,
     mime: request.file.mimetype,

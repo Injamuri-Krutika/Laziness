@@ -35,11 +35,10 @@ const storage = multer.diskStorage({
       req.body.roll,
       req.body.exam,
     )}/${req.body.set}`;
-    if (!filePaths[req.body.roll]) {
-      filePaths[req.body.roll] = dest;
-    } else {
+    if (filePaths[req.body.roll]) {
       fs.removeSync(filePaths[req.body.roll]);
     }
+    filePaths[req.body.roll] = dest;
     fs.mkdirsSync(dest);
     cb(null, dest);
   },

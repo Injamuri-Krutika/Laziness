@@ -67,11 +67,11 @@ app.post('/submit', upload.single('zip'), (request, response) => {
     name: request.file.originalname,
     mime: request.file.mimetype,
   };
-  return response.redirect(`http://${process.env.HOST}:7878/thankyou`);
+  return response.redirect(`http://${process.env.HOST}:${process.env.PORT}/thankyou`);
 });
 
 // listen for requests :)
-const listener = app.listen(process.env.FILE_PORT || 7777, () => {
+const listener = app.listen(process.env.FILE_PORT || 8080, () => {
   // eslint-disable-next-line no-console
   console.log(`Your app is listening on port ${listener.address().port}`);
 });

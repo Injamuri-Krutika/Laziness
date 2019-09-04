@@ -1,6 +1,6 @@
 .demo-card-square.mdl-card {
   width: 600px;
-  height: 340px;
+  height: auto;
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;

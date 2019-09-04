@@ -2,10 +2,7 @@
   <head>
     <title>Lab Exam</title>
     <meta charset="utf-8" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+    <link rel="stylesheet" href="./css/material.icons.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/material.min.css" />
   </head>
@@ -21,10 +18,18 @@
             </h2>
           </div>
           <form
-            action="http://localhost:7777/submit"
+            action="http://10.5.0.195:7777/submit"
             method="post"
             enctype="multipart/form-data"
           >
+            <input
+              class="mdl-textfield__input"
+              type="hidden"
+              name="exam"
+              id="exam"
+              value="dsp"
+              readonly
+            />
             <div
               class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
             >
@@ -35,17 +40,6 @@
                 name="roll"
               />
               <label class="mdl-textfield__label" for="roll">Roll No</label>
-            </div>
-            <div
-              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            >
-              <input
-                class="mdl-textfield__input"
-                type="hidden"
-                name="exam"
-                id="exam"
-                value="dsp"
-              />
             </div>
             <div
               class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
@@ -68,6 +62,7 @@
                 type="text"
                 id="uploadFile"
                 name="uploadFile"
+                accept="zip"
                 readonly
               />
               <label class="mdl-textfield__label" for="uploadFile">File</label>
@@ -79,6 +74,7 @@
                 ><input type="file" id="uploadBtn" name="zip" />
               </div>
             </div>
+
             <div class="mdl-card__actions mdl-card--border">
               <button
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"

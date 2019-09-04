@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
     const dest = `./uploads/${req.body.exam}/${getTA(
       req.body.roll,
       req.body.exam,
-    )}/${req.body.set}`;
+    )}/${req.body.set}/${req.body.roll}`;
     if (filePaths[req.body.roll]) {
       fs.removeSync(filePaths[req.body.roll]);
     }

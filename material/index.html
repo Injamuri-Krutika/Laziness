@@ -28,7 +28,12 @@
             <div
               class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
             >
-              <input class="mdl-textfield__input" type="text" id="roll" />
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="roll"
+                name="roll"
+              />
               <label class="mdl-textfield__label" for="roll">Roll No</label>
             </div>
             <div
@@ -36,7 +41,19 @@
             >
               <input
                 class="mdl-textfield__input"
+                type="hidden"
+                name="exam"
+                id="exam"
+                value="dsp"
+              />
+            </div>
+            <div
+              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            >
+              <input
+                class="mdl-textfield__input"
                 type="text"
+                name="set"
                 pattern="-?[0-9]*(\.[0-9]+)?"
                 id="set"
               />
@@ -50,6 +67,7 @@
                 class="mdl-textfield__input"
                 type="text"
                 id="uploadFile"
+                name="uploadFile"
                 readonly
               />
               <label class="mdl-textfield__label" for="uploadFile">File</label>

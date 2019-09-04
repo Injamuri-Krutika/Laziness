@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 // server.js
 // Server app to display the webpage
 
@@ -6,11 +7,33 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs-extra');
+const taList = require('./constants.js');
 
 const app = express();
+
+// eslint-disable-next-line require-jsdoc
+function getTA(_roll, exam) {
+  // Function to get the correct TA
+  let roll = _roll;
+  const pattern = /19[Mm][Cc][mM][Tt][0-5][0-9]/;
+  if (!roll.match(pattern)) return 'others';
+  roll = +roll.substring(roll.length - 2);
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key in taList.ta[exam]) {
+    if (taList.ta[exam][key][0] <= roll && roll <= taList.ta[exam][key][1]) {
+      console.log(key);
+      return key;
+    }
+  }
+}
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dest = `./dsp/${req.body.set}/`;
+    // console.log(req.body);
+    const dest = `./uploads/${req.body.exam}/${getTA(
+      req.body.roll,
+      req.body.exam
+    )}/${req.body.set}`;
     fs.mkdirsSync(dest);
     cb(null, dest);
   },
@@ -25,11 +48,11 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({storage});
 
 app.post('/submit', upload.single('zip'), (request, response) => {
-  console.log(request.file);
-  console.log(request.body);
+  // console.log(request.file);
+  // console.log(request.body);
 
   const meta = {
     name: request.file.originalname,

@@ -8,6 +8,8 @@ const app = express();
 
 app.use(express.static('material'));
 app.use(express.static('material/html'));
+app.use(express.static('node_modules/material-design-icons/iconfont'));
+
 
 app.get('/', (request, response) => {
   response.sendFile(`${__dirname}/index.html`);

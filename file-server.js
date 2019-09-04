@@ -8,9 +8,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs-extra');
 const taList = require('./constants.js');
+require('dotenv').config();
 
 const app = express();
-
+const filePaths = {};
 // eslint-disable-next-line require-jsdoc
 function getTA(_roll, exam) {
   // Function to get the correct TA
@@ -29,26 +30,34 @@ function getTA(_roll, exam) {
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // console.log(req.body);
+    console.log(req.body);
     const dest = `./uploads/${req.body.exam}/${getTA(
       req.body.roll,
-      req.body.exam
+      req.body.exam,
     )}/${req.body.set}`;
+    if (!filePaths[req.body.roll]) {
+      filePaths[req.body.roll] = dest;
+    } else {
+      fs.removeSync(filePaths[req.body.roll]);
+    }
     fs.mkdirsSync(dest);
     cb(null, dest);
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
+});
+
+const upload = multer({
+  storage,
   fileFilter: (req, file, cb) => {
+    console.log(path.extname(file.originalname));
     if (path.extname(file.originalname) !== '.zip') {
-      return cb(new Error('Only ZIPs are allowed'));
+      return cb(new Error('Only ZIPs are allowed. Please upload again.'));
     }
     return cb(null, true);
   },
 });
-
-const upload = multer({storage});
 
 app.post('/submit', upload.single('zip'), (request, response) => {
   // console.log(request.file);
@@ -58,7 +67,7 @@ app.post('/submit', upload.single('zip'), (request, response) => {
     name: request.file.originalname,
     mime: request.file.mimetype,
   };
-  return response.send(meta);
+  return response.redirect(`http://${process.env.HOST}:7878/thankyou`);
 });
 
 // listen for requests :)

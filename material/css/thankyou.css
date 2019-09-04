@@ -1,6 +1,6 @@
 .demo-card-square.mdl-card {
   width: 600px;
-  height: auto;
+  /* height: 300px; */
 }
 
 .demo-card-square > .mdl-card__title {

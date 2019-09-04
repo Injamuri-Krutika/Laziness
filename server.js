@@ -7,9 +7,13 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('material'));
+app.use(express.static('material/html'));
 
 app.get('/', (request, response) => {
   response.sendFile(`${__dirname}/index.html`);
+});
+app.get('/thankyou', (request, response) => {
+  response.sendFile(`${__dirname}/material/html/thankyou.html`);
 });
 
 // listen for requests :)

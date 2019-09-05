@@ -46,8 +46,9 @@
                 type="text"
                 id="roll"
                 name="roll"
+                onkeyup="validate()"
               />
-              <label class="mdl-textfield__label" for="roll">Roll No</label>
+              <label class="mdl-textfield__label" for="roll">Roll No*</label>
             </div>
             <div
               class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
@@ -58,8 +59,9 @@
                 name="set"
                 pattern="-?[0-9]*(\.[0-9]+)?"
                 id="set"
+                onkeyup="validate()"
               />
-              <label class="mdl-textfield__label" for="set">Set Number</label>
+              <label class="mdl-textfield__label" for="set">Set Number*</label>
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
             <div
@@ -70,11 +72,10 @@
                 type="text"
                 id="uploadFile"
                 name="uploadFile"
-                accept="zip"
+                accept=".zip"
                 readonly
+                placeholder="Zip File*"
               />
-              <label class="mdl-textfield__label" for="uploadFile">File</label>
-
               <div
                 class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file"
               >
@@ -82,11 +83,15 @@
                 ><input type="file" id="uploadBtn" name="zip" />
               </div>
             </div>
-
+            <span style="color: blue;display: block;padding-bottom: 2%;"
+              >Only ZIP files allowed.</span
+            >
             <div class="mdl-card__actions mdl-card--border">
               <button
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
                 type="submit"
+                id="uploadDetails"
+                disabled
               >
                 Upload Details
               </button>

@@ -31,10 +31,7 @@ function getTA(_roll, exam) {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     console.log(req.body);
-    const dest = `./uploads/${req.body.exam}/${getTA(
-      req.body.roll,
-      req.body.exam,
-    )}/${req.body.set}/${req.body.roll}`;
+    const dest = `./uploads/${req.body.exam}/${req.body.roll}`;
     if (filePaths[req.body.roll]) {
       fs.removeSync(filePaths[req.body.roll]);
     }
@@ -51,8 +48,8 @@ const upload = multer({
   storage,
   fileFilter: (req, file, cb) => {
     console.log(path.extname(file.originalname));
-    if (path.extname(file.originalname) !== '.zip') {
-      return cb(new Error('Only ZIPs are allowed. Please upload again.'));
+    if (path.extname(file.originalname) !== '.tar') {
+      return cb(new Error('Only tar are allowed. Please upload again.'));
     }
     return cb(null, true);
   },
